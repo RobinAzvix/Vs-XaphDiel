@@ -1,0 +1,32 @@
+{
+	"storyName": "Vs. XaphDiel",
+	"difficulties": "Hard",
+	"hideFreeplay": false,
+	"weekBackground": "xaph",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Directo",
+			"xaph",
+			[
+				0,
+				80,
+				255
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "Xaph",
+	"hiddenUntilUnlocked": false
+}

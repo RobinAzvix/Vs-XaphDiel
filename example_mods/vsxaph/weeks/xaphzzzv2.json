@@ -1,0 +1,113 @@
+{
+	"songs": [
+		[
+			"Como Chingan",
+			"trecker",
+			[
+				255,
+				53,
+				133
+			]
+		],
+		[
+			"Gartic",
+			"xaphinette",
+			[
+				106,
+				193,
+				253
+			]
+		],
+		[
+			"Lore",
+			"xaphreal",
+			[
+				46,
+				113,
+				255
+			]
+		],
+		[
+			"Blue",
+			"xaphblue",
+			[
+				46,
+				113,
+				255
+			]
+		],
+		[
+			"Panas",
+			"face",
+			[
+				40,
+				213,
+				20
+			]
+		],
+		[
+			"Krakatoa",
+			"krakatoa",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Purple Flower",
+			"face",
+			[
+				146,
+				40,
+				255
+			]
+		],
+		[
+			"Rank",
+			"face",
+			[
+				46,
+				113,
+				255
+			]
+		],
+		[
+			"Ending to the Direct",
+			"face",
+			[
+				46,
+				0,
+				0
+			]
+		],
+		[
+			"Suffering Siblings",
+			"glitchbros",
+			[
+				255,
+				53,
+				133
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "Hard",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "Your New Week",
+	"weekName": "v2",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": true,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}
