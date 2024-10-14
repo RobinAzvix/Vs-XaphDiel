@@ -87,6 +87,10 @@ class MainMenuState extends MusicBeatState
 		psychVer.scrollFactor.set();
 		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(psychVer);
+		var protoVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Prototipo V1.0.5", 12);
+		protoVer.scrollFactor.set();
+		protoVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(protoVer);
 		changeItem();
 
 		#if ACHIEVEMENTS_ALLOWED
