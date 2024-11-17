@@ -43,6 +43,7 @@ class CreditsState extends MusicBeatState
 			['Cycled',				'cyc',				"Director, Artista y Animador",						 		 'https://www.youtube.com/@cycledLikeDraws',					'5D65FF'],
 			['RobinAzvix',			'evilsk8r',			"Source & Lua Coder, Charter",							 	 'https://www.youtube.com/@robinazvix',							'00FFE1'],
 			['Un known Gamer 324',	'theunknowngamer',	"Coder y Animador",							 				 'https://www.youtube.com/@un.knowngamer324',					'00FF04'],
+			['Winter',				'winter',			"Coder, Artista, Animador y Compositor",					 'https://www.youtube.com/@imwinterpng',						'FFFFFF'],
 			['NErxO',				'ninjamuffin99',	"Coder y Charter",						 					 'https://www.youtube.com/@XxNErxOxX',							'F56AF7'],
 			['Juan412',				'phantomarcade',	"Artista",							 						 'https://www.youtube.com/@Juan412gamer',						'0014F2'],
 			['lucagg',				'evilsk8r',			"Artista",							 						 'https://www.youtube.com/@lucagg5856',							'3c399e'],
