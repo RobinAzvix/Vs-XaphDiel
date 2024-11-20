@@ -36,9 +36,8 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('BGOptions'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.color = 0xFFea71fd;
 		bg.updateHitbox();
 
 		bg.screenCenter();
@@ -54,6 +53,22 @@ class OptionsState extends MusicBeatState
 			optionText.y += (100 * (i - (options.length / 2))) + 50;
 			grpOptions.add(optionText);
 		}
+
+		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up.antialiasing = ClientPrefs.data.antialiasing;
+		up.scrollFactor.set(0,0);
+		up.setGraphicSize(Std.int(bg.width * 1));
+		up.updateHitbox();
+		up.screenCenter();
+		add(up);
+
+		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down.antialiasing = ClientPrefs.data.antialiasing;
+		down.scrollFactor.set(0,0);
+		down.setGraphicSize(Std.int(bg.width * 1));
+		down.updateHitbox();
+		down.screenCenter();
+		add(down);
 
 		selectorLeft = new Alphabet(0, 0, '>', true);
 		add(selectorLeft);

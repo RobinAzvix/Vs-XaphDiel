@@ -26,7 +26,7 @@ class CreditsState extends MusicBeatState
 		#end
 
 		persistentUpdate = true;
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('BGCredits'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 		bg.screenCenter();
@@ -40,59 +40,59 @@ class CreditsState extends MusicBeatState
 
 		var defaultList:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			["Vs Xaph Team"],
-			['Cycled',				'cyc',				"Director, Artista y Animador",						 		 'https://www.youtube.com/@cycledLikeDraws',					'5D65FF'],
-			['SantiAnimations',		'kawaisprite',		"Co-director, Artista y Animador",							 			 'https://www.youtube.com/@Santi-Animations',					'ffee00'],
-			['RobinAzvix',			'evilsk8r',			"Co-director, Source & Lua Coder, Charter",							 	 'https://www.youtube.com/@robinazvix',							'00FFE1'],
-			['Un known Gamer 324',	'theunknowngamer',	"Coder y Animador",							 				 'https://www.youtube.com/@un.knowngamer324',					'00FF04'],
+			['Cycled',				'cyc',				"Director, Artista y Animador",						 		 'https://www.youtube.com/@cycledLikeDraws',					'FFFFFF'],
+			['SantiAnimations',		'kawaisprite',		"Co-director, Artista y Animador",							 'https://www.youtube.com/@Santi-Animations',					'FFFFFF'],
+			['RobinAzvix',			'evilsk8r',			"Co-director, Source & Lua Coder, Charter",					 'https://www.youtube.com/@robinazvix',							'FFFFFF'],
+			['Un known Gamer 324',	'theunknowngamer',	"Coder y Animador",							 				 'https://www.youtube.com/@un.knowngamer324',					'FFFFFF'],
 			['Winter',				'winter',			"Coder, Artista, Animador y Compositor",					 'https://www.youtube.com/@imwinterpng',						'FFFFFF'],
-			['NErxO',				'ninjamuffin99',	"Coder y Charter",						 					 'https://www.youtube.com/@XxNErxOxX',							'F56AF7'],
-			['Juan412',				'phantomarcade',	"Artista",							 						 'https://www.youtube.com/@Juan412gamer',						'0014F2'],
-			['lucagg',				'evilsk8r',			"Artista",							 						 'https://www.youtube.com/@lucagg5856',							'3c399e'],
-			['The Xenophanes DX',	'xeno',				"Artista",						 							 'https://twitter.com/Xeno12345rt',								'CF2D2D'],
-			['BenKamyn',			'kawaisprite',		"Artista",							 						 'https://www.youtube.com/@Ben-Kamyn',							'5d00ff'],
-			['Nothingness',			'phantomarcade',	"Animador",							 						 'https://www.instagram.com/no____one_____important/',			'000cb3'],
-			['QuasarXP',			'quazar',			"Animador y Compositor",							 		 'https://www.youtube.com/@QuasarXP_',							'8e38ff'],
-			['Snowlui',				'snow',				"Compositor",						 						 'https://www.youtube.com/@snowlui4458',						'b71360'],
-			['Chicharron Prensado',	'chicha',			"Compositor",							 					 'https://x.com/elalexisequisde',								'016e03'],
-			['Tonas',				'phantomarcade',	"Compositor",							 					 'https://www.youtube.com/@tonastherealflp',					'200578'],
-			['DudeThatAnimates',	'evilsk8r',			"Compositor",							 					 'https://www.youtube.com/watch?v=fugtxz1znVw',					'ff0040'],
-			['Jipersickness',		'ninjamuffin99',	"Compositor",						 						 'https://www.youtube.com/@Only_jiper',							'5d00ff'],
-			['Mr. Frostbear',		'phantomarcade',	"Compositor",							 					 'https://www.youtube.com/@El_Frof',							'57e3ff'],
-			['JustSam',				'kawaisprite',		"Chromatic Maker",							 				 'https://x.com/StarSugarySpicy',								'ff5795'],
-			['S4NT146031',			'ninjamuffin99',	"Voice Actor",						 						 'https://x.com/S4_31X',										'1d10ad'],
-			['Fervoh',				'fervo',			"Charter",							 					 	 'https://twitter.com/Fervo64488176',							'55ff00'],
-			['Starly',				'kawaisprite',		"Charter",							 					 	 'https://www.youtube.com/watch?v=fugtxz1znVw',					'08e2ff'],
+			['NErxO',				'ninjamuffin99',	"Coder y Charter",						 					 'https://www.youtube.com/@XxNErxOxX',							'FFFFFF'],
+			['Juan412',				'phantomarcade',	"Artista",							 						 'https://www.youtube.com/@Juan412gamer',						'FFFFFF'],
+			['lucagg',				'evilsk8r',			"Artista",							 						 'https://www.youtube.com/@lucagg5856',							'FFFFFF'],
+			['The Xenophanes DX',	'xeno',				"Artista",						 							 'https://twitter.com/Xeno12345rt',								'FFFFFF'],
+			['BenKamyn',			'kawaisprite',		"Artista",							 						 'https://www.youtube.com/@Ben-Kamyn',							'FFFFFF'],
+			['Nothingness',			'phantomarcade',	"Animador",							 						 'https://www.instagram.com/no____one_____important/',			'FFFFFF'],
+			['QuasarXP',			'quazar',			"Animador y Compositor",							 		 'https://www.youtube.com/@QuasarXP_',							'FFFFFF'],
+			['Snowlui',				'snow',				"Compositor",						 						 'https://www.youtube.com/@snowlui4458',						'FFFFFF'],
+			['Chicharron Prensado',	'chicha',			"Compositor",							 					 'https://x.com/elalexisequisde',								'FFFFFF'],
+			['Tonas',				'phantomarcade',	"Compositor",							 					 'https://www.youtube.com/@tonastherealflp',					'FFFFFF'],
+			['DudeThatAnimates',	'evilsk8r',			"Compositor",							 					 'https://www.youtube.com/watch?v=fugtxz1znVw',					'FFFFFF'],
+			['Jipersickness',		'ninjamuffin99',	"Compositor",						 						 'https://www.youtube.com/@Only_jiper',							'FFFFFF'],
+			['Mr. Frostbear',		'phantomarcade',	"Compositor",							 					 'https://www.youtube.com/@El_Frof',							'FFFFFF'],
+			['JustSam',				'kawaisprite',		"Chromatic Maker",							 				 'https://x.com/StarSugarySpicy',								'FFFFFF'],
+			['S4NT146031',			'ninjamuffin99',	"Voice Actor",						 						 'https://x.com/S4_31X',										'FFFFFF'],
+			['Fervoh',				'fervo',			"Charter",							 					 	 'https://twitter.com/Fervo64488176',							'FFFFFF'],
+			['Starly',				'kawaisprite',		"Charter",							 					 	 'https://www.youtube.com/watch?v=fugtxz1znVw',					'FFFFFF'],
 			[''],
 			["Special Thanks"],
-			['DaxterXLL',			'dax',				"Apoyo Emocional",							 				 'https://x.com/Daxterxll',										'ec693a'],
-			['XaphDiel',			'xd',				"No se quien es este pero huele a jabon",					 'https://www.youtube.com/@XaphDiel',							'ff0000'],
-			['Trecker',				'kawaisprite',		"El inicio de una nueva era",					 			 'https://www.youtube.com/@Treckeruwu',							'ff33aa'],
+			['DaxterXLL',			'dax',				"Apoyo Emocional",							 				 'https://x.com/Daxterxll',										'FFFFFF'],
+			['XaphDiel',			'xd',				"No se quien es este pero huele a jabon",					 'https://www.youtube.com/@XaphDiel',							'FFFFFF'],
+			['Trecker',				'kawaisprite',		"El inicio de una nueva era",					 			 'https://www.youtube.com/@Treckeruwu',							'FFFFFF'],
 			[''],
 			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer and Head of Psych Engine',					 'https://ko-fi.com/shadowmario',		'444444'],
-			['Riveren',				'riveren',			'Main Artist/Animator of Psych Engine',						 'https://twitter.com/riverennn',		'14967B'],
+			['Shadow Mario',		'shadowmario',		'Main Programmer and Head of Psych Engine',					 'https://ko-fi.com/shadowmario',		'FFFFFF'],
+			['Riveren',				'riveren',			'Main Artist/Animator of Psych Engine',						 'https://twitter.com/riverennn',		'FFFFFF'],
 			[''],
 			['Former Engine Members'],
-			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',							 'https://twitter.com/bbsub3',			'3E813A'],
-			['shubs',				'',					'Ex-Programmer of Psych Engine\nI don\'t support them.',	 '',									'A1A1A1'],
+			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',							 'https://twitter.com/bbsub3',			'FFFFFF'],
+			['shubs',				'',					'Ex-Programmer of Psych Engine\nI don\'t support them.',	 '',									'FFFFFF'],
 			[''],
 			['Engine Contributors'],
-			['CrowPlexus',			'crowplexus',		'Input System v3, Major Help and Other PRs',				 'https://twitter.com/crowplexus',		'A1A1A1'],
-			['Keoiki',				'keoiki',			'Note Splash Animations and Latin Alphabet',				 'https://twitter.com/Keoiki_',			'D2D2D2'],
-			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform', 'https://twitter.com/gedehari',		'E1843A'],
-			['EliteMasterEric',		'mastereric',		'Runtime Shaders support',									 'https://twitter.com/EliteMasterEric',	'FFBD40'],
-			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',						 'https://twitter.com/polybiusproxy',	'DCD294'],
-			['Tahir',				'tahir',			'Implementing & Maintaining SScript and Other PRs',			 'https://twitter.com/tahirk618',		'A04397'],
-			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',	 'https://twitter.com/flicky_i',		'9E29CF'],
-			['KadeDev',				'kade',				'Fixed some issues on Chart Editor and Other PRs',			 'https://twitter.com/kade0912',		'64A250'],
-			['superpowers04',		'superpowers04',	'LUA JIT Fork',												 'https://twitter.com/superpowers04',	'B957ED'],
-			['CheemsAndFriends',	'face',	'Creator of FlxAnimate\n(Icon will be added later, merry christmas!)',	 'https://twitter.com/CheemsnFriendos',	'A1A1A1'],
+			['CrowPlexus',			'crowplexus',		'Input System v3, Major Help and Other PRs',				 'https://twitter.com/crowplexus',		'FFFFFF'],
+			['Keoiki',				'keoiki',			'Note Splash Animations and Latin Alphabet',				 'https://twitter.com/Keoiki_',			'FFFFFF'],
+			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform', 'https://twitter.com/gedehari',		'FFFFFF'],
+			['EliteMasterEric',		'mastereric',		'Runtime Shaders support',									 'https://twitter.com/EliteMasterEric',	'FFFFFF'],
+			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',						 'https://twitter.com/polybiusproxy',	'FFFFFF'],
+			['Tahir',				'tahir',			'Implementing & Maintaining SScript and Other PRs',			 'https://twitter.com/tahirk618',		'FFFFFF'],
+			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',	 'https://twitter.com/flicky_i',		'FFFFFF'],
+			['KadeDev',				'kade',				'Fixed some issues on Chart Editor and Other PRs',			 'https://twitter.com/kade0912',		'FFFFFF'],
+			['superpowers04',		'superpowers04',	'LUA JIT Fork',												 'https://twitter.com/superpowers04',	'FFFFFF'],
+			['CheemsAndFriends',	'face',	'Creator of FlxAnimate\n(Icon will be added later, merry christmas!)',	 'https://twitter.com/CheemsnFriendos',	'FFFFFF'],
 			[''],
 			["Funkin' Crew"],
-			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",						 'https://twitter.com/ninja_muffin99',	'CF2D2D'],
-			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",							 'https://twitter.com/PhantomArcade3K',	'FADC45'],
-			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",							 'https://twitter.com/evilsk8r',		'5ABD4B'],
-			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",							 'https://twitter.com/kawaisprite',		'378FC7']
+			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",						 'https://twitter.com/ninja_muffin99',	'FFFFFF'],
+			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",							 'https://twitter.com/PhantomArcade3K',	'FFFFFF'],
+			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",							 'https://twitter.com/evilsk8r',		'FFFFFF'],
+			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",							 'https://twitter.com/kawaisprite',		'FFFFFF']
 		];
 		
 		for(i in defaultList) {
@@ -137,6 +137,22 @@ class CreditsState extends MusicBeatState
 			}
 			else optionText.alignment = CENTERED;
 		}
+
+		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up.antialiasing = ClientPrefs.data.antialiasing;
+		up.scrollFactor.set(0,0);
+		up.setGraphicSize(Std.int(bg.width * 1));
+		up.updateHitbox();
+		up.screenCenter();
+		add(up);
+
+		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down.antialiasing = ClientPrefs.data.antialiasing;
+		down.scrollFactor.set(0,0);
+		down.setGraphicSize(Std.int(bg.width * 1));
+		down.updateHitbox();
+		down.screenCenter();
+		add(down);
 		
 		descBox = new AttachedSprite();
 		descBox.makeGraphic(1, 1, FlxColor.BLACK);

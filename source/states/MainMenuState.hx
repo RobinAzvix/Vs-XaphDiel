@@ -21,7 +21,6 @@ class MainMenuState extends MusicBeatState
 		'options'
 	];
 
-	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
 	override function create()
@@ -41,7 +40,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('BGMain'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.scrollFactor.set(0,0);
 		bg.setGraphicSize(Std.int(bg.width * 1));
@@ -51,16 +50,6 @@ class MainMenuState extends MusicBeatState
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.antialiasing = ClientPrefs.data.antialiasing;
-		magenta.scrollFactor.set(0,0);
-		magenta.setGraphicSize(Std.int(magenta.width * 1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -82,6 +71,22 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 			menuItem.screenCenter(X);
 		}
+
+		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up.antialiasing = ClientPrefs.data.antialiasing;
+		up.scrollFactor.set(0,0);
+		up.setGraphicSize(Std.int(bg.width * 1));
+		up.updateHitbox();
+		up.screenCenter();
+		add(up);
+
+		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down.antialiasing = ClientPrefs.data.antialiasing;
+		down.scrollFactor.set(0,0);
+		down.setGraphicSize(Std.int(bg.width * 1));
+		down.updateHitbox();
+		down.screenCenter();
+		add(down);
 
 		var psychVer:FlxText = new FlxText(12, FlxG.height - 24, 0, "Vs XaphDiel v" + psychEngineVersion, 12);
 		psychVer.scrollFactor.set();
@@ -145,9 +150,6 @@ class MainMenuState extends MusicBeatState
 				else
 				{
 					selectedSomethin = true;
-
-					if (ClientPrefs.data.flashing)
-						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					FlxFlicker.flicker(menuItems.members[curSelected], 1, 0.06, false, false, function(flick:FlxFlicker)
 					{

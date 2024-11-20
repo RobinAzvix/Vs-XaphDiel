@@ -10,6 +10,7 @@ import objects.MusicPlayer;
 import substates.GameplayChangersSubstate;
 import substates.ResetScoreSubState;
 
+import flixel.effects.FlxFlicker;
 import flixel.math.FlxMath;
 
 class FreeplayState extends MusicBeatState
@@ -88,7 +89,7 @@ class FreeplayState extends MusicBeatState
 		}
 		Mods.loadTopMod();
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('BGFreeplay'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 		bg.screenCenter();
@@ -122,6 +123,23 @@ class FreeplayState extends MusicBeatState
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
 		}
+
+		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up.antialiasing = ClientPrefs.data.antialiasing;
+		up.scrollFactor.set(0,0);
+		up.setGraphicSize(Std.int(bg.width * 1));
+		up.updateHitbox();
+		up.screenCenter();
+		add(up);
+
+		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down.antialiasing = ClientPrefs.data.antialiasing;
+		down.scrollFactor.set(0,0);
+		down.setGraphicSize(Std.int(bg.width * 1));
+		down.updateHitbox();
+		down.screenCenter();
+		add(down);
+		
 		WeekData.setDirectoryFromWeek();
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
@@ -195,6 +213,9 @@ class FreeplayState extends MusicBeatState
 	var instPlaying:Int = -1;
 	public static var vocals:FlxSound = null;
 	var holdTime:Float = 0;
+
+	var selectedSomethin:Bool = false;
+
 	override function update(elapsed:Float)
 	{
 		if (FlxG.sound.music.volume < 0.7)
@@ -226,7 +247,7 @@ class FreeplayState extends MusicBeatState
 			scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 			positionHighscore();
 			
-			if(songs.length > 1)
+			if(songs.length > 1 && !selectedSomethin)
 			{
 				if(FlxG.keys.justPressed.HOME)
 				{
@@ -240,6 +261,7 @@ class FreeplayState extends MusicBeatState
 					changeSelection();
 					holdTime = 0;	
 				}
+
 				if (controls.UI_UP_P)
 				{
 					changeSelection(-shiftMult);
@@ -250,6 +272,7 @@ class FreeplayState extends MusicBeatState
 					changeSelection(shiftMult);
 					holdTime = 0;
 				}
+
 
 				if(controls.UI_DOWN || controls.UI_UP)
 				{
@@ -354,9 +377,42 @@ class FreeplayState extends MusicBeatState
 		}
 		else if (controls.ACCEPT && !player.playingMusic)
 		{
+			FlxG.sound.music.stop();
+
 			persistentUpdate = false;
+			selectedSomethin = true;
+
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
+
+			switch (songs[curSelected].songName)
+			{
+				case 'Caguamas':
+					FlxG.sound.play(Paths.sound('confirm-Caguamas'));
+				case 'Ending to the Direct':
+					FlxG.sound.play(Paths.sound('confirm-EXE'));
+				case 'Directo':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Como Chingan':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Gartic':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Blue':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Lore':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Panas':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Krakatoa':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Purple Flower':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Rank':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+				case 'Suffering Siblings':
+					FlxG.sound.play(Paths.sound('confirm-Directo'));
+			}
+
 			/*#if MODS_ALLOWED
 			if(!FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
 			#else
@@ -366,6 +422,7 @@ class FreeplayState extends MusicBeatState
 				curDifficulty = 1;
 				trace('Couldnt find file');
 			}*/
+
 			trace(poop);
 
 			try
@@ -395,7 +452,11 @@ class FreeplayState extends MusicBeatState
 				super.update(elapsed);
 				return;
 			}
-			LoadingState.loadAndSwitchState(new PlayState());
+
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
+				LoadingState.loadAndSwitchState(new PlayState());
+			});
 
 			FlxG.sound.music.volume = 0;
 					
