@@ -25,6 +25,7 @@ class FreeplayState extends MusicBeatState
 
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
+	var nameText:FlxText;
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
 	var lerpRating:Float = 0;
@@ -142,12 +143,16 @@ class FreeplayState extends MusicBeatState
 		
 		WeekData.setDirectoryFromWeek();
 
-		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
-		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		scoreText = new FlxText(FlxG.width/2, 550, 0, "", 28);
+		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
-		scoreBG.alpha = 0.6;
+		scoreBG.alpha = 0;
 		add(scoreBG);
+
+		nameText = new FlxText(scoreText.x, scoreText.y - 36, 0, "", 32);
+		nameText.font = scoreText.font;
+		add(nameText);
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
@@ -244,7 +249,7 @@ class FreeplayState extends MusicBeatState
 
 		if (!player.playingMusic)
 		{
-			scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+			scoreText.text = 'Record: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 			positionHighscore();
 			
 			if(songs.length > 1 && !selectedSomethin)
@@ -334,47 +339,6 @@ class FreeplayState extends MusicBeatState
 			persistentUpdate = false;
 			openSubState(new GameplayChangersSubstate());
 		}
-		else if(FlxG.keys.justPressed.SPACE)
-		{
-			if(instPlaying != curSelected && !player.playingMusic)
-			{
-				destroyFreeplayVocals();
-				FlxG.sound.music.volume = 0;
-
-				Mods.currentModDirectory = songs[curSelected].folder;
-				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
-				if (PlayState.SONG.needsVoices)
-				{
-					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-					FlxG.sound.list.add(vocals);
-					vocals.persist = true;
-					vocals.looped = true;
-				}
-				else if (vocals != null)
-				{
-					vocals.stop();
-					vocals.destroy();
-					vocals = null;
-				}
-
-				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.8);
-				if(vocals != null) //Sync vocals to Inst
-				{
-					vocals.play();
-					vocals.volume = 0.8;
-				}
-				instPlaying = curSelected;
-
-				player.playingMusic = true;
-				player.curTime = 0;
-				player.switchPlayMusic();
-			}
-			else if (instPlaying == curSelected && player.playingMusic)
-			{
-				player.pauseOrResume(player.paused);
-			}
-		}
 		else if (controls.ACCEPT && !player.playingMusic)
 		{
 			FlxG.sound.music.stop();
@@ -391,25 +355,7 @@ class FreeplayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('confirm-Caguamas'));
 				case 'Ending to the Direct':
 					FlxG.sound.play(Paths.sound('confirm-EXE'));
-				case 'Directo':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Como Chingan':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Gartic':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Blue':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Lore':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Panas':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Krakatoa':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Purple Flower':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Rank':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-				case 'Suffering Siblings':
+				case 'Directo','Como Chingan','Gartic','Blue','Lore','Panas','Krakatoa','Purple Flower','Rank','Suffering Siblings':
 					FlxG.sound.play(Paths.sound('confirm-Directo'));
 			}
 
@@ -527,6 +473,8 @@ class FreeplayState extends MusicBeatState
 			curSelected = songs.length - 1;
 		if (curSelected >= songs.length)
 			curSelected = 0;
+
+		nameText.text = songs[curSelected].songName;
 			
 		var newColor:Int = songs[curSelected].color;
 		if(newColor != intendedColor) {
@@ -585,11 +533,11 @@ class FreeplayState extends MusicBeatState
 	}
 
 	private function positionHighscore() {
-		scoreText.x = FlxG.width - scoreText.width - 6;
+		scoreText.x = (FlxG.width - scoreText.width)/2;
 		scoreBG.scale.x = FlxG.width - scoreText.x + 6;
 		scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
-		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
-		diffText.x -= diffText.width / 2;
+		nameText.x = (FlxG.width - nameText.width)/2;
+		diffText.x = (FlxG.width - diffText.width)/2;
 	}
 
 	var _drawDistance:Int = 4;
