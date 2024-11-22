@@ -267,41 +267,42 @@ class FreeplayState extends MusicBeatState
 					holdTime = 0;	
 				}
 
-				if (controls.UI_UP_P)
+				if (controls.UI_LEFT_P)
 				{
 					changeSelection(-shiftMult);
 					holdTime = 0;
 				}
-				if (controls.UI_DOWN_P)
+
+				if (controls.UI_RIGHT_P)
 				{
 					changeSelection(shiftMult);
 					holdTime = 0;
 				}
-
-
-				if(controls.UI_DOWN || controls.UI_UP)
+	
+	
+				if(controls.UI_RIGHT || controls.UI_LEFT)
 				{
 					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 					holdTime += elapsed;
 					var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
-
+	
 					if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
 				}
-
+	
 				if(FlxG.mouse.wheel != 0)
 				{
 					FlxG.sound.play(Paths.sound('scrollMenu'), 0.2);
 					changeSelection(-shiftMult * FlxG.mouse.wheel, false);
 				}
 			}
-
-			if (controls.UI_LEFT_P)
+	
+			if (controls.UI_UP_P)
 			{
 				changeDiff(-1);
 				_updateSongLastDifficulty();
 			}
-			else if (controls.UI_RIGHT_P)
+			else if (controls.UI_DOWN_P)
 			{
 				changeDiff(1);
 				_updateSongLastDifficulty();
@@ -557,12 +558,12 @@ class FreeplayState extends MusicBeatState
 		for (i in min...max)
 		{
 			var item:Alphabet = grpSongs.members[i];
-			item.visible = item.active = true;
+			item.visible = item.active = false;
 			item.x = ((item.targetY - lerpSelected) * item.distancePerItem.x) + item.startPosition.x;
 			item.y = ((item.targetY - lerpSelected) * 1.3 * item.distancePerItem.y) + item.startPosition.y;
 
 			var icon:HealthIcon = iconArray[i];
-			icon.visible = icon.active = true;
+			icon.visible = icon.active = false;
 			_lastVisibles.push(i);
 		}
 	}
