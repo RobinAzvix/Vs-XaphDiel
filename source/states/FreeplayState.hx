@@ -50,6 +50,11 @@ class FreeplayState extends MusicBeatState
 
 	var player:MusicPlayer;
 
+	var up:FlxSprite;
+	var down:FlxSprite;
+
+	var preview:FlxSprite;
+
 	override function create()
 	{
 		//Paths.clearStoredMemory();
@@ -125,7 +130,7 @@ class FreeplayState extends MusicBeatState
 			// songText.screenCenter(X);
 		}
 
-		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
 		up.antialiasing = ClientPrefs.data.antialiasing;
 		up.scrollFactor.set(0,0);
 		up.setGraphicSize(Std.int(bg.width * 1));
@@ -133,7 +138,7 @@ class FreeplayState extends MusicBeatState
 		up.screenCenter();
 		add(up);
 
-		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
 		down.antialiasing = ClientPrefs.data.antialiasing;
 		down.scrollFactor.set(0,0);
 		down.setGraphicSize(Std.int(bg.width * 1));
@@ -183,7 +188,7 @@ class FreeplayState extends MusicBeatState
 		bottomBG.alpha = 0.6;
 		add(bottomBG);
 
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
 		bottomString = leText;
 		var size:Int = 16;
 		bottomText = new FlxText(bottomBG.x, bottomBG.y + 4, FlxG.width, leText, size);
@@ -332,6 +337,63 @@ class FreeplayState extends MusicBeatState
 				}
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
+				FlxTween.tween(up, {y: -300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						up.kill();
+					}
+				});
+
+				FlxTween.tween(down, {y: 300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						down.kill();
+					}
+				});
+
+				FlxTween.tween(bg, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						bg.kill();
+					}
+				});
+
+				FlxTween.tween(scoreText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						scoreText.kill();
+					}
+				});
+
+				
+				FlxTween.tween(diffText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						diffText.kill();
+					}
+				});
+
+				
+				FlxTween.tween(nameText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						nameText.kill();
+					}
+				});
+
+				FlxTween.tween(preview, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						preview.kill();
+					}
+				});
 			}
 		}
 
@@ -403,6 +465,63 @@ class FreeplayState extends MusicBeatState
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
 				LoadingState.loadAndSwitchState(new PlayState());
+				FlxTween.tween(up, {y: -300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						up.kill();
+					}
+				});
+
+				FlxTween.tween(down, {y: 300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						down.kill();
+					}
+				});
+
+				FlxTween.tween(bg, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						bg.kill();
+					}
+				});
+
+				FlxTween.tween(scoreText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						scoreText.kill();
+					}
+				});
+
+				
+				FlxTween.tween(diffText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						diffText.kill();
+					}
+				});
+
+				
+				FlxTween.tween(nameText, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						nameText.kill();
+					}
+				});
+
+				FlxTween.tween(preview, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						preview.kill();
+					}
+				});
 			});
 
 			FlxG.sound.music.volume = 0;
@@ -476,6 +595,14 @@ class FreeplayState extends MusicBeatState
 			curSelected = 0;
 
 		nameText.text = songs[curSelected].songName;
+
+		remove(preview);
+		preview = new FlxSprite().loadGraphic(Paths.image('freeplay/portada_' + songs[curSelected].songName));
+		preview.x = (FlxG.width - preview.width)/2;
+		preview.y = 50;
+		preview.setGraphicSize(320,412);
+		preview.antialiasing = ClientPrefs.data.antialiasing;
+		add(preview);
 			
 		var newColor:Int = songs[curSelected].color;
 		if(newColor != intendedColor) {

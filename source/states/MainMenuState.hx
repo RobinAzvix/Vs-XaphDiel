@@ -23,6 +23,10 @@ class MainMenuState extends MusicBeatState
 
 	var camFollow:FlxObject;
 
+	var bg:FlxSprite;
+	var up:FlxSprite;
+	var down:FlxSprite;
+
 	override function create()
 	{
 		#if MODS_ALLOWED
@@ -40,7 +44,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('BGMain'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('BGMain'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.scrollFactor.set(0,0);
 		bg.setGraphicSize(Std.int(bg.width * 1));
@@ -72,7 +76,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.screenCenter(X);
 		}
 
-		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
+		up = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
 		up.antialiasing = ClientPrefs.data.antialiasing;
 		up.scrollFactor.set(0,0);
 		up.setGraphicSize(Std.int(bg.width * 1));
@@ -80,7 +84,7 @@ class MainMenuState extends MusicBeatState
 		up.screenCenter();
 		add(up);
 
-		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
+		down = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
 		down.antialiasing = ClientPrefs.data.antialiasing;
 		down.scrollFactor.set(0,0);
 		down.setGraphicSize(Std.int(bg.width * 1));
@@ -138,6 +142,30 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
+
+				FlxTween.tween(up, {y: -300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						up.kill();
+					}
+				});
+
+				FlxTween.tween(down, {y: 300}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						down.kill();
+					}
+				});
+
+				FlxTween.tween(bg, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						bg.kill();
+					}
+				});
 			}
 
 			if (controls.ACCEPT)
@@ -182,6 +210,30 @@ class MainMenuState extends MusicBeatState
 									PlayState.stageUI = 'normal';
 								}
 						}
+
+						FlxTween.tween(up, {y: -300}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								up.kill();
+							}
+						});
+	
+						FlxTween.tween(down, {y: 300}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								down.kill();
+							}
+						});
+	
+						FlxTween.tween(bg, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								bg.kill();
+							}
+						});
 					});
 
 					for (i in 0...menuItems.members.length)

@@ -135,22 +135,6 @@ class CreditsState extends MusicBeatState
 			}
 			else optionText.alignment = CENTERED;
 		}
-
-		var up:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroarriba'));
-		up.antialiasing = ClientPrefs.data.antialiasing;
-		up.scrollFactor.set(0,0);
-		up.setGraphicSize(Std.int(bg.width * 1));
-		up.updateHitbox();
-		up.screenCenter();
-		add(up);
-
-		var down:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('negroabajo'));
-		down.antialiasing = ClientPrefs.data.antialiasing;
-		down.scrollFactor.set(0,0);
-		down.setGraphicSize(Std.int(bg.width * 1));
-		down.updateHitbox();
-		down.screenCenter();
-		add(down);
 		
 		descBox = new AttachedSprite();
 		descBox.makeGraphic(1, 1, FlxColor.BLACK);
@@ -226,6 +210,13 @@ class CreditsState extends MusicBeatState
 				}
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
+				FlxTween.tween(bg, {y: 800}, 0.6, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						bg.kill();
+					}
+				});
 				quitting = true;
 			}
 		}
