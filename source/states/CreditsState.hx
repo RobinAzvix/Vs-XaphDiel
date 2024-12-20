@@ -53,6 +53,7 @@ class CreditsState extends MusicBeatState
 			['QuasarXP',			'quazar',			"Animador y Compositor",							 		 'https://www.youtube.com/@QuasarXP_',							'FFFFFF'],
 			['Snowlui',				'snow',				"Compositor",						 						 'https://www.youtube.com/@snowlui4458',						'FFFFFF'],
 			['Chicharron Prensado',	'chicha',			"Compositor",							 					 'https://x.com/elalexisequisde',								'FFFFFF'],
+			['DynaCarl',			'dyla',				"Compositor",							 					 'https://www.youtube.com/channel/UCOVB7v-g7gkbI855p_lmY9g',					'FFFFFF'],
 			['DudeThatAnimates',	'evilsk8r',			"Compositor",							 					 'https://www.youtube.com/watch?v=fugtxz1znVw',					'FFFFFF'],
 			['Jipersickness',		'ninjamuffin99',	"Compositor",						 						 'https://www.youtube.com/@Only_jiper',							'FFFFFF'],
 			['Mr. Frostbear',		'phantomarcade',	"Compositor",							 					 'https://www.youtube.com/@El_Frof',							'FFFFFF'],
@@ -64,33 +65,7 @@ class CreditsState extends MusicBeatState
 			["Special Thanks"],
 			['DaxterXLL',			'dax',				"Apoyo Emocional",							 				 'https://x.com/Daxterxll',										'FFFFFF'],
 			['XaphDiel',			'xd',				"No se quien es este pero huele a jabon",					 'https://www.youtube.com/@XaphDiel',							'FFFFFF'],
-			['Trecker',				'kawaisprite',		"El inicio de una nueva era",					 			 'https://www.youtube.com/@Treckeruwu',							'FFFFFF'],
-			[''],
-			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer and Head of Psych Engine',					 'https://ko-fi.com/shadowmario',		'FFFFFF'],
-			['Riveren',				'riveren',			'Main Artist/Animator of Psych Engine',						 'https://twitter.com/riverennn',		'FFFFFF'],
-			[''],
-			['Former Engine Members'],
-			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',							 'https://twitter.com/bbsub3',			'FFFFFF'],
-			['shubs',				'',					'Ex-Programmer of Psych Engine\nI don\'t support them.',	 '',									'FFFFFF'],
-			[''],
-			['Engine Contributors'],
-			['CrowPlexus',			'crowplexus',		'Input System v3, Major Help and Other PRs',				 'https://twitter.com/crowplexus',		'FFFFFF'],
-			['Keoiki',				'keoiki',			'Note Splash Animations and Latin Alphabet',				 'https://twitter.com/Keoiki_',			'FFFFFF'],
-			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform', 'https://twitter.com/gedehari',		'FFFFFF'],
-			['EliteMasterEric',		'mastereric',		'Runtime Shaders support',									 'https://twitter.com/EliteMasterEric',	'FFFFFF'],
-			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',						 'https://twitter.com/polybiusproxy',	'FFFFFF'],
-			['Tahir',				'tahir',			'Implementing & Maintaining SScript and Other PRs',			 'https://twitter.com/tahirk618',		'FFFFFF'],
-			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',	 'https://twitter.com/flicky_i',		'FFFFFF'],
-			['KadeDev',				'kade',				'Fixed some issues on Chart Editor and Other PRs',			 'https://twitter.com/kade0912',		'FFFFFF'],
-			['superpowers04',		'superpowers04',	'LUA JIT Fork',												 'https://twitter.com/superpowers04',	'FFFFFF'],
-			['CheemsAndFriends',	'face',	'Creator of FlxAnimate\n(Icon will be added later, merry christmas!)',	 'https://twitter.com/CheemsnFriendos',	'FFFFFF'],
-			[''],
-			["Funkin' Crew"],
-			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",						 'https://twitter.com/ninja_muffin99',	'FFFFFF'],
-			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",							 'https://twitter.com/PhantomArcade3K',	'FFFFFF'],
-			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",							 'https://twitter.com/evilsk8r',		'FFFFFF'],
-			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",							 'https://twitter.com/kawaisprite',		'FFFFFF']
+			['Trecker',				'kawaisprite',		"El inicio de una nueva era",					 			 'https://www.youtube.com/@Treckeruwu',							'FFFFFF']
 		];
 		
 		for(i in defaultList) {
@@ -99,6 +74,7 @@ class CreditsState extends MusicBeatState
 	
 		for (i in 0...creditsStuff.length)
 		{
+
 			var isSelectable:Bool = !unselectableCheck(i);
 			var optionText:Alphabet = new Alphabet(FlxG.width / 2, 300, creditsStuff[i][0], !isSelectable);
 			optionText.isMenuItem = true;
