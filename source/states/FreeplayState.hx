@@ -418,7 +418,7 @@ class FreeplayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('confirm-Caguamas'));
 				case 'Ending to the Direct':
 					FlxG.sound.play(Paths.sound('confirm-EXE'));
-				case 'Directo','Como Chingan','Gartic','Blue','Lore','Panas','Krakatoa','Purple Flower','Rank','Suffering Siblings':
+				case 'Directo','Como Chingan','Gartic','Blue','Lore','Panas','Krakatoa','Purple Flower','Rank','Suffering Siblings', 'Meme':
 					FlxG.sound.play(Paths.sound('confirm-Directo'));
 			}
 
