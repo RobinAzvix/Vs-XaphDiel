@@ -1,0 +1,122 @@
+{
+	"songs": [
+		[
+			"Caguamas",
+			"xaphundertale",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Gartic",
+			"xaphinette",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Lore",
+			"xaphreal",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Blue",
+			"xaphblue",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Panas",
+			"face",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Krakatoa",
+			"bad-xaph",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Purple Flower",
+			"face",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Rank",
+			"face",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Ending to the Direct",
+			"face",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Suffering Siblings",
+			"glitchbros",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"Meme",
+			"meme",
+			[
+				255,
+				255,
+				255
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "Hard",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "Your New Week",
+	"weekName": "v2",
+	"freeplayColor": [
+		255,
+		255,
+		255
+	],
+	"hideStoryMode": true,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}

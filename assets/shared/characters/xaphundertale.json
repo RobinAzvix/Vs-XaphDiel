@@ -1,0 +1,91 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				453,
+				119
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "izquierda"
+		},
+		{
+			"offsets": [
+				455,
+				122
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "abajo"
+		},
+		{
+			"offsets": [
+				373,
+				95
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "arriba"
+		},
+		{
+			"offsets": [
+				321,
+				170
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "derecha"
+		},
+		{
+			"offsets": [
+				370,
+				30
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "sanes"
+		},
+		{
+			"offsets": [
+				420,
+				70
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/xapns",
+	"position": [
+		40,
+		10
+	],
+	"healthicon": "xaphundertale",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-300,
+		-120
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

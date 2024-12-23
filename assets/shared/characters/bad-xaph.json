@@ -1,0 +1,80 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				190,
+				-285
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "izquierda"
+		},
+		{
+			"offsets": [
+				-20,
+				-305
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "derecha"
+		},
+		{
+			"offsets": [
+				60,
+				-280
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-25,
+				-120
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "arriba"
+		},
+		{
+			"offsets": [
+				34,
+				-370
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "abajo"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/krakatoas",
+	"position": [
+		0,
+		50
+	],
+	"healthicon": "bad-xaph",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		300
+	],
+	"sing_duration": 4,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

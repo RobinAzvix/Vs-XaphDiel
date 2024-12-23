@@ -61,7 +61,7 @@ class CreditsState extends MusicBeatState
 			['JustSam',				'sam',				"Chromatic Maker",							 				 'https://x.com/StarSugarySpicy',								'FFFFFF'],
 			['MixCat',				'kawaisprite',		"Chromatic Maker",							 				 'https://x.com/mixcatidk',										'FFFFFF'],
 			['S4NT146031',			'ninjamuffin99',	"Voice Actor",						 						 'https://x.com/S4_31X',										'FFFFFF'],
-			['Fervoh',				'fervo',			"Charter",							 					 	 'https://twitter.com/Fervo64488176',							'FFFFFF'],
+			['Fervo',				'fervo',			"Charter",							 					 	 'https://twitter.com/Fervo64488176',							'FFFFFF'],
 			[''],
 			["Special Thanks"],
 			['DaxterXLL',			'dax',				"Apoyo Emocional",							 				 'https://x.com/Daxterxll',										'FFFFFF'],
