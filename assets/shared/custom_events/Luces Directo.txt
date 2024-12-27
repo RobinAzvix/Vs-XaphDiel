@@ -1,0 +1,2 @@
+1 - Prender o Apagar
+2- Tiempo

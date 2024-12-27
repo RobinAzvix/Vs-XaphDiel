@@ -1,0 +1,190 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-75,
+				-49
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-64,
+				-55
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-117,
+				-54
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-114,
+				-15
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-97,
+				-96
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-113,
+				-90
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "damage",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-113,
+				-90
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "damage",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-113,
+				-90
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "damage",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-113,
+				-90
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "damage",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/caguamasBF",
+	"position": [
+		0,
+		300
+	],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		0,
+		70
+	],
+	"sing_duration": 4.99999999999999,
+	"scale": 1
+}

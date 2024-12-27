@@ -38,6 +38,7 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	var bg:FlxSprite;
+	var flechas:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
@@ -145,6 +146,14 @@ class FreeplayState extends MusicBeatState
 		down.updateHitbox();
 		down.screenCenter();
 		add(down);
+
+		flechas = new FlxSprite(-80).loadGraphic(Paths.image('freeplay/felchas'));
+		flechas.antialiasing = ClientPrefs.data.antialiasing;
+		flechas.scrollFactor.set(0,0);
+		flechas.setGraphicSize(Std.int(bg.width * 1));
+		flechas.updateHitbox();
+		flechas.screenCenter();
+		add(flechas);
 		
 		WeekData.setDirectoryFromWeek();
 
@@ -300,6 +309,158 @@ class FreeplayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('scrollMenu'), 0.2);
 					changeSelection(-shiftMult * FlxG.mouse.wheel, false);
 				}
+
+				if(FlxG.keys.justPressed.CONTROL && !player.playingMusic)
+				{
+					persistentUpdate = false;
+					openSubState(new GameplayChangersSubstate());
+				}
+				else if (controls.ACCEPT && !player.playingMusic)
+				{
+					FlxG.sound.music.stop();
+			
+					persistentUpdate = false;
+					selectedSomethin = true;
+			
+					var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+					var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
+			
+					switch (songs[curSelected].songName)
+					{
+						case 'Caguamas':
+							FlxG.sound.play(Paths.sound('confirm-Caguamas'));
+						case 'Ending to the Direct':
+							FlxG.sound.play(Paths.sound('confirm-EXE'));
+						case 'Directo','Como Chingan','Gartic','Blue','Lore','Panas','Krakatoa','Purple Flower','Rank','Suffering Siblings', 'Meme':
+							FlxG.sound.play(Paths.sound('confirm-Directo'));
+					}
+			
+					/*#if MODS_ALLOWED
+					if(!FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
+					#else
+					if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
+					#end
+						poop = songLowercase;
+						curDifficulty = 1;
+						trace('Couldnt find file');
+					}*/
+			
+					trace(poop);
+			
+					try
+					{
+						PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+						PlayState.isStoryMode = false;
+						PlayState.storyDifficulty = curDifficulty;
+		
+						trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+						if(colorTween != null) {
+							colorTween.cancel();
+						}
+					}
+					catch(e:Dynamic)
+					{
+						trace('ERROR! $e');
+			
+						var errorStr:String = e.toString();
+						if(errorStr.startsWith('[file_contents,assets/data/')) errorStr = 'Missing file: ' + errorStr.substring(34, errorStr.length-1); //Missing chart
+						missingText.text = 'ERROR WHILE LOADING CHART:\n$errorStr';
+						missingText.screenCenter(Y);
+						missingText.visible = true;
+						missingTextBG.visible = true;
+						FlxG.sound.play(Paths.sound('cancelMenu'));
+			
+						updateTexts(elapsed);
+						super.update(elapsed);
+						return;
+					}
+			
+					new FlxTimer().start(2, function(tmr:FlxTimer)
+					{
+						LoadingState.loadAndSwitchState(new PlayState());
+						FlxTween.tween(up, {y: -300}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								up.kill();
+							}
+						});
+			
+						FlxTween.tween(down, {y: 300}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								down.kill();
+							}
+						});
+			
+						FlxTween.tween(bg, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								bg.kill();
+							}
+						});
+		
+						FlxTween.tween(flechas, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								flechas.kill();
+							}
+						});
+			
+						FlxTween.tween(scoreText, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								scoreText.kill();
+							}
+						});
+			
+							
+						FlxTween.tween(diffText, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								diffText.kill();
+							}
+						});
+			
+							
+						FlxTween.tween(nameText, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								nameText.kill();
+							}
+						});
+			
+						FlxTween.tween(preview, {y: 800}, 0.6, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								preview.kill();
+							}
+						});
+					});
+			
+					FlxG.sound.music.volume = 0;
+								
+					destroyFreeplayVocals();
+					#if (MODS_ALLOWED && DISCORD_ALLOWED)
+					DiscordClient.loadModRPC();
+					#end
+				}
+				else if(controls.RESET && !player.playingMusic)
+				{
+					persistentUpdate = false;
+					openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+				}
+			
+				updateTexts(elapsed);
+				super.update(elapsed);
 			}
 	
 			if (controls.UI_UP_P)
@@ -361,131 +522,11 @@ class FreeplayState extends MusicBeatState
 					}
 				});
 
-				FlxTween.tween(scoreText, {y: 800}, 0.6, {
+				FlxTween.tween(flechas, {y: 800}, 0.6, {
 					ease: FlxEase.quadOut,
 					onComplete: function(twn:FlxTween)
 					{
-						scoreText.kill();
-					}
-				});
-
-				
-				FlxTween.tween(diffText, {y: 800}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						diffText.kill();
-					}
-				});
-
-				
-				FlxTween.tween(nameText, {y: 800}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						nameText.kill();
-					}
-				});
-
-				FlxTween.tween(preview, {y: 800}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						preview.kill();
-					}
-				});
-			}
-		}
-
-		if(FlxG.keys.justPressed.CONTROL && !player.playingMusic)
-		{
-			persistentUpdate = false;
-			openSubState(new GameplayChangersSubstate());
-		}
-		else if (controls.ACCEPT && !player.playingMusic)
-		{
-			FlxG.sound.music.stop();
-
-			persistentUpdate = false;
-			selectedSomethin = true;
-
-			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
-
-			switch (songs[curSelected].songName)
-			{
-				case 'Caguamas':
-					FlxG.sound.play(Paths.sound('confirm-Caguamas'));
-				case 'Ending to the Direct':
-					FlxG.sound.play(Paths.sound('confirm-EXE'));
-				case 'Directo','Como Chingan','Gartic','Blue','Lore','Panas','Krakatoa','Purple Flower','Rank','Suffering Siblings', 'Meme':
-					FlxG.sound.play(Paths.sound('confirm-Directo'));
-			}
-
-			/*#if MODS_ALLOWED
-			if(!FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
-			#else
-			if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
-			#end
-				poop = songLowercase;
-				curDifficulty = 1;
-				trace('Couldnt find file');
-			}*/
-
-			trace(poop);
-
-			try
-			{
-				PlayState.SONG = Song.loadFromJson(poop, songLowercase);
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = curDifficulty;
-
-				trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-				if(colorTween != null) {
-					colorTween.cancel();
-				}
-			}
-			catch(e:Dynamic)
-			{
-				trace('ERROR! $e');
-
-				var errorStr:String = e.toString();
-				if(errorStr.startsWith('[file_contents,assets/data/')) errorStr = 'Missing file: ' + errorStr.substring(34, errorStr.length-1); //Missing chart
-				missingText.text = 'ERROR WHILE LOADING CHART:\n$errorStr';
-				missingText.screenCenter(Y);
-				missingText.visible = true;
-				missingTextBG.visible = true;
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-
-				updateTexts(elapsed);
-				super.update(elapsed);
-				return;
-			}
-
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				LoadingState.loadAndSwitchState(new PlayState());
-				FlxTween.tween(up, {y: -300}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						up.kill();
-					}
-				});
-
-				FlxTween.tween(down, {y: 300}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						down.kill();
-					}
-				});
-
-				FlxTween.tween(bg, {y: 800}, 0.6, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						bg.kill();
+						flechas.kill();
 					}
 				});
 
@@ -522,24 +563,8 @@ class FreeplayState extends MusicBeatState
 						preview.kill();
 					}
 				});
-			});
-
-			FlxG.sound.music.volume = 0;
-					
-			destroyFreeplayVocals();
-			#if (MODS_ALLOWED && DISCORD_ALLOWED)
-			DiscordClient.loadModRPC();
-			#end
+			}
 		}
-		else if(controls.RESET && !player.playingMusic)
-		{
-			persistentUpdate = false;
-			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-		}
-
-		updateTexts(elapsed);
-		super.update(elapsed);
 	}
 
 	public static function destroyFreeplayVocals() {

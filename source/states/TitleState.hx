@@ -41,6 +41,7 @@ class TitleState extends MusicBeatState
 
 	public static var initialized:Bool = false;
 
+	var bg:FlxSprite;
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -192,32 +193,28 @@ class TitleState extends MusicBeatState
 		Conductor.bpm = titleJSON.bpm;
 		persistentUpdate = true;
 
-		var bg:FlxSprite = new FlxSprite();
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('BGTitle'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
-
-		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
-			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
-		}else{
-			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		}
-
-		// bg.setGraphicSize(Std.int(bg.width * 0.6));
-		// bg.updateHitbox();
+		bg.scrollFactor.set(0,0);
+		bg.setGraphicSize(Std.int(bg.width * 1));
+		bg.updateHitbox();
+		bg.screenCenter();
 		add(bg);
 
-		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
+		logoBl = new FlxSprite(titleJSON.titlex,-50);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = ClientPrefs.data.antialiasing;
 
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
-		// logoBl.screenCenter();
+		logoBl.screenCenter(X);
 		// logoBl.color = FlxColor.BLACK;
 
 		if(ClientPrefs.data.shaders) swagShader = new ColorSwap();
 		gfDance = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
 		gfDance.antialiasing = ClientPrefs.data.antialiasing;
+		gfDance.alpha = 0;
 
 		var easterEgg:String = FlxG.save.data.psychDevsEasterEgg;
 		if(easterEgg == null) easterEgg = ''; //html5 fix
@@ -257,7 +254,7 @@ class TitleState extends MusicBeatState
 			logoBl.shader = swagShader.shader;
 		}
 
-		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
+		titleText = new FlxSprite(titleJSON.startx, 600);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
 		var animFrames:Array<FlxFrame> = [];
 		@:privateAccess {
@@ -280,7 +277,7 @@ class TitleState extends MusicBeatState
 		
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
-		// titleText.screenCenter(X);
+		//titleText.screenCenter(X);
 		add(titleText);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
