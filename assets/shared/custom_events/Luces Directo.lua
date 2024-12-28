@@ -1,5 +1,17 @@
+local escenarios = {
+    'directo',
+    'teke'
+}
+local pantallazo = false
+
+for _, noGO in pairs(escenarios) do
+    if noGO == curStage then
+        pantallazo = true
+    end
+end
+
 function onEvent(eventName, value1, value2)
-	if curStage == 'directo' then
+	if pantallazo == true then
 		if eventName == 'Luces Directo' then
 			if value1 == '1' then
 				doTweenAlpha('negro', 'bg', 0.25, value2)

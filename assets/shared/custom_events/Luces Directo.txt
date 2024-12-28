@@ -1,2 +1,2 @@
-1 - Prender o Apagar
+1- Activo o no
 2- Tiempo

@@ -11,6 +11,17 @@ function onCreate()
 	scaleObject('floor', 0.75, 0.8);
 	addLuaSprite('floor',false)
 
+	makeLuaSprite('bg','',-790,-200)
+	makeGraphic('bg','2080','1210','000000')
+	setProperty('bg.alpha', 0)
+	addLuaSprite('bg',false)
+
+	makeLuaSprite('luz','stages/xaph/spotlight',110,0)
+	scaleObject('luz', 0.8, 0.8);
+	setBlendMode('luz','add')
+	setProperty('luz.alpha', 0)
+	addLuaSprite('luz',true)
+
 	makeLuaSprite('cortinas','stages/xaph/stagecurtains',-640,-100)
 	scaleObject('cortinas', 0.75, 0.8);
 	addLuaSprite('cortinas',true)
@@ -22,7 +33,7 @@ function onCreate()
 		setObjectCamera('bflife','hud')
 
 		makeLuaSprite('bflife2','',208,573)
-		makeGraphic('bflife2',600,12,'44FFFF')
+		makeGraphic('bflife2',600,12,'63BAFF')
 		addLuaSprite('bflife2', true);
 		setObjectCamera('bflife2','hud')
 
@@ -37,7 +48,7 @@ function onCreate()
 		setObjectCamera('bflife','hud')
 
 		makeLuaSprite('bflife2','',208,153)
-		makeGraphic('bflife2',600,12,'44FFFF')
+		makeGraphic('bflife2',600,12,'63BAFF')
 		addLuaSprite('bflife2', true);
 		setObjectCamera('bflife2','hud')
 
